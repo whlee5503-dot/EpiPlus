@@ -1,122 +1,88 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+﻿import { useState, lazy, Suspense } from "react";
+import "./App.css";
+import ErrorBoundary from "./components/ErrorBoundary";
+import { translations } from "./i18n/translations";
+import type { Lang } from "./i18n/translations";
 
-function App() {
-  const [count, setCount] = useState(0)
+const DesignEffectAnalysis = lazy(() => import("./components/DesignEffectAnalysis"));
 
-  return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+interface ModuleConfig {
+  id: string;
+  navLabel: (lang: Lang) => string;
+  Component: React.ComponentType<{ lang: Lang }>;
 }
 
-export default App
+const MODULES: ModuleConfig[] = [
+  {
+    id: "designEffect",
+    navLabel: (lang) => translations[lang].samplingdesign.subnav.designEffect,
+    Component: DesignEffectAnalysis,
+  },
+];
+
+const LANGS: Lang[] = ["en", "ko", "fr"];
+
+function App() {
+  const [lang, setLang] = useState<Lang>("en");
+  const [activeModuleId, setActiveModuleId] = useState<string>(MODULES[0].id);
+
+  const t = translations[lang];
+  const activeModule = MODULES.find((m) => m.id === activeModuleId) ?? MODULES[0];
+  const ActiveComponent = activeModule.Component;
+
+  return (
+    <div className="app-root">
+      <div className="app-lang-switcher">
+        {LANGS.map((l) => (
+          <button
+            key={l}
+            type="button"
+            className={`app-lang-btn ${l === lang ? "app-lang-btn-active" : ""}`}
+            onClick={() => setLang(l)}
+          >
+            {l.toUpperCase()}
+          </button>
+        ))}
+      </div>
+
+      <header style={{ padding: "var(--space-4) var(--space-6) 0" }}>
+        <h1>{t.appName}</h1>
+        <p style={{ color: "var(--text-muted)" }}>{t.appTagline}</p>
+      </header>
+
+      <nav className="app-nav">
+        {MODULES.map((m) => (
+          <button
+            key={m.id}
+            type="button"
+            className={`app-nav-btn ${m.id === activeModuleId ? "app-nav-btn-active" : ""}`}
+            onClick={() => setActiveModuleId(m.id)}
+          >
+            {m.navLabel(lang)}
+          </button>
+        ))}
+      </nav>
+
+      <main style={{ flex: 1, padding: "var(--space-6)" }}>
+        <ErrorBoundary lang={lang} resetKey={activeModuleId}>
+          <Suspense fallback={<div className="app-module-loading">...</div>}>
+            <ActiveComponent lang={lang} />
+          </Suspense>
+        </ErrorBoundary>
+      </main>
+
+      <footer
+        style={{
+          padding: "var(--space-4) var(--space-6)",
+          borderTop: "1px solid var(--border-color)",
+          color: "var(--text-muted)",
+          fontSize: "0.78rem",
+        }}
+      >
+        {t.common.disclaimer}
+      </footer>
+    </div>
+  );
+}
+
+export default App;
