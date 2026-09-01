@@ -3,10 +3,12 @@
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-epiplus.phtlab.org-brightgreen)](https://epiplus.phtlab.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/whlee5503-dot/EpiPlus/blob/main/LICENSE)
 [![Built with React](https://img.shields.io/badge/Built%20with-React%20%2B%20TypeScript-blue)](https://react.dev)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22239499.svg)](https://doi.org/10.5281/zenodo.22239499)
 
 ## 📢 Status
 
 - **Digital Public Goods (DPG):** Preparing for submission to the [Digital Public Goods Alliance (DPGA)](https://digitalpublicgoods.net)
+- **Archived on Zenodo:** [10.5281/zenodo.22239499](https://doi.org/10.5281/zenodo.22239499) (v1.0.0, September 2026)
 - Part of the [PublicHealth Tech Lab](https://phtlab.org) family of offline-first public health tools, alongside [EpiCalc](https://epi.chem-health-calc.com), [EpiStat](https://epistat.phtlab.org), [EpiLog](https://epilog-d72.pages.dev), [EpiAid](https://epiaid.pages.dev), and [VaxGuard](https://vaxguard.pages.dev)
 
 ---
