@@ -67,8 +67,9 @@ export default function AgeStandardizationInput({ value, onChange, lang }: Props
     return (
       <div className="as-input-wrapper">
         <div className="as-field">
-          <span className="as-field-label">{ts.methodLabel}</span>
+          <label className="as-field-label" htmlFor="as-method-direct">{ts.methodLabel}</label>
           <select
+            id="as-method-direct"
             className="as-method-select"
             value={value.method}
             onChange={(e) => setMethod(e.target.value as "direct" | "indirect")}
@@ -94,8 +95,9 @@ export default function AgeStandardizationInput({ value, onChange, lang }: Props
               </div>
               <div className="as-row-fields">
                 <div className="as-field">
-                  <span className="as-field-label">{ts.directLabelLabel}</span>
+                  <label className="as-field-label" htmlFor={`as-d-label-${row.id}`}>{ts.directLabelLabel}</label>
                   <input
+                    id={`as-d-label-${row.id}`}
                     type="text"
                     className="as-text-input"
                     value={row.label}
@@ -103,8 +105,9 @@ export default function AgeStandardizationInput({ value, onChange, lang }: Props
                   />
                 </div>
                 <div className="as-field">
-                  <span className="as-field-label">{ts.directStudyDeathsLabel}</span>
+                  <label className="as-field-label" htmlFor={`as-d-deaths-${row.id}`}>{ts.directStudyDeathsLabel}</label>
                   <input
+                    id={`as-d-deaths-${row.id}`}
                     type="number"
                     inputMode="decimal"
                     min={0}
@@ -117,8 +120,9 @@ export default function AgeStandardizationInput({ value, onChange, lang }: Props
                   />
                 </div>
                 <div className="as-field">
-                  <span className="as-field-label">{ts.directStudyPopulationLabel}</span>
+                  <label className="as-field-label" htmlFor={`as-d-studypop-${row.id}`}>{ts.directStudyPopulationLabel}</label>
                   <input
+                    id={`as-d-studypop-${row.id}`}
                     type="number"
                     inputMode="decimal"
                     min={0}
@@ -131,8 +135,9 @@ export default function AgeStandardizationInput({ value, onChange, lang }: Props
                   />
                 </div>
                 <div className="as-field">
-                  <span className="as-field-label">{ts.directStandardPopulationLabel}</span>
+                  <label className="as-field-label" htmlFor={`as-d-stdpop-${row.id}`}>{ts.directStandardPopulationLabel}</label>
                   <input
+                    id={`as-d-stdpop-${row.id}`}
                     type="number"
                     inputMode="decimal"
                     min={0}
@@ -178,8 +183,9 @@ export default function AgeStandardizationInput({ value, onChange, lang }: Props
   return (
     <div className="as-input-wrapper">
       <div className="as-field">
-        <span className="as-field-label">{ts.methodLabel}</span>
+        <label className="as-field-label" htmlFor="as-method-indirect">{ts.methodLabel}</label>
         <select
+          id="as-method-indirect"
           className="as-method-select"
           value={value.method}
           onChange={(e) => setMethod(e.target.value as "direct" | "indirect")}
@@ -205,8 +211,9 @@ export default function AgeStandardizationInput({ value, onChange, lang }: Props
             </div>
             <div className="as-row-fields">
               <div className="as-field">
-                <span className="as-field-label">{ts.indirectLabelLabel}</span>
+                <label className="as-field-label" htmlFor={`as-i-label-${row.id}`}>{ts.indirectLabelLabel}</label>
                 <input
+                  id={`as-i-label-${row.id}`}
                   type="text"
                   className="as-text-input"
                   value={row.label}
@@ -214,8 +221,9 @@ export default function AgeStandardizationInput({ value, onChange, lang }: Props
                 />
               </div>
               <div className="as-field">
-                <span className="as-field-label">{ts.indirectStandardRateLabel}</span>
+                <label className="as-field-label" htmlFor={`as-i-rate-${row.id}`}>{ts.indirectStandardRateLabel}</label>
                 <input
+                  id={`as-i-rate-${row.id}`}
                   type="number"
                   inputMode="decimal"
                   min={0}
@@ -228,8 +236,9 @@ export default function AgeStandardizationInput({ value, onChange, lang }: Props
                 />
               </div>
               <div className="as-field">
-                <span className="as-field-label">{ts.indirectStudyPopulationLabel}</span>
+                <label className="as-field-label" htmlFor={`as-i-studypop-${row.id}`}>{ts.indirectStudyPopulationLabel}</label>
                 <input
+                  id={`as-i-studypop-${row.id}`}
                   type="number"
                   inputMode="decimal"
                   min={0}
@@ -250,8 +259,9 @@ export default function AgeStandardizationInput({ value, onChange, lang }: Props
       </button>
 
       <div className="as-field">
-        <span className="as-field-label">{ts.observedDeathsLabel}</span>
+        <label className="as-field-label" htmlFor="as-observed-deaths">{ts.observedDeathsLabel}</label>
         <input
+          id="as-observed-deaths"
           type="number"
           inputMode="decimal"
           min={0}
@@ -263,8 +273,9 @@ export default function AgeStandardizationInput({ value, onChange, lang }: Props
       </div>
 
       <div className="as-field">
-        <span className="as-field-label">{ts.referenceCrudeRateLabel}</span>
+        <label className="as-field-label" htmlFor="as-reference-crude-rate">{ts.referenceCrudeRateLabel}</label>
         <input
+          id="as-reference-crude-rate"
           type="number"
           inputMode="decimal"
           min={0}

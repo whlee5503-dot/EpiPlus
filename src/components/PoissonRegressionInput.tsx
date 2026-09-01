@@ -76,8 +76,9 @@ export default function PoissonRegressionInput({ value, onChange, lang }: Props)
               </div>
               <div className="pois-row-fields">
                 <div className="pois-field">
-                  <span className="pois-field-label">{ts.groupLabelLabel}</span>
+                  <label className="pois-field-label" htmlFor={`pois-label-${g.id}`}>{ts.groupLabelLabel}</label>
                   <input
+                    id={`pois-label-${g.id}`}
                     type="text"
                     className="pois-text-input"
                     value={g.label}
@@ -85,8 +86,9 @@ export default function PoissonRegressionInput({ value, onChange, lang }: Props)
                   />
                 </div>
                 <div className="pois-field">
-                  <span className="pois-field-label">{ts.eventsLabel}</span>
+                  <label className="pois-field-label" htmlFor={`pois-events-${g.id}`}>{ts.eventsLabel}</label>
                   <input
+                    id={`pois-events-${g.id}`}
                     type="number"
                     inputMode="decimal"
                     min={0}
@@ -97,8 +99,9 @@ export default function PoissonRegressionInput({ value, onChange, lang }: Props)
                   />
                 </div>
                 <div className="pois-field">
-                  <span className="pois-field-label">{ts.personTimeLabel}</span>
+                  <label className="pois-field-label" htmlFor={`pois-persontime-${g.id}`}>{ts.personTimeLabel}</label>
                   <input
+                    id={`pois-persontime-${g.id}`}
                     type="number"
                     inputMode="decimal"
                     min={0}

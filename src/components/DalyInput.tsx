@@ -82,8 +82,9 @@ export default function DalyInput({ value, onChange, lang }: Props) {
             </div>
             <div className="daly-row-fields">
               <div className="daly-field">
-                <span className="daly-field-label">{ts.yllLabelLabel}</span>
+                <label className="daly-field-label" htmlFor={`daly-yll-label-${row.id}`}>{ts.yllLabelLabel}</label>
                 <input
+                  id={`daly-yll-label-${row.id}`}
                   type="text"
                   className="daly-text-input"
                   value={row.label}
@@ -91,8 +92,9 @@ export default function DalyInput({ value, onChange, lang }: Props) {
                 />
               </div>
               <div className="daly-field">
-                <span className="daly-field-label">{ts.yllDeathsLabel}</span>
+                <label className="daly-field-label" htmlFor={`daly-yll-deaths-${row.id}`}>{ts.yllDeathsLabel}</label>
                 <input
+                  id={`daly-yll-deaths-${row.id}`}
                   type="number"
                   inputMode="decimal"
                   min={0}
@@ -105,8 +107,9 @@ export default function DalyInput({ value, onChange, lang }: Props) {
                 />
               </div>
               <div className="daly-field">
-                <span className="daly-field-label">{ts.yllLifeExpectancyLabel}</span>
+                <label className="daly-field-label" htmlFor={`daly-yll-le-${row.id}`}>{ts.yllLifeExpectancyLabel}</label>
                 <input
+                  id={`daly-yll-le-${row.id}`}
                   type="number"
                   inputMode="decimal"
                   min={0}
@@ -129,8 +132,9 @@ export default function DalyInput({ value, onChange, lang }: Props) {
       <div className="daly-section-title">{ts.yldSectionTitle}</div>
 
       <div className="daly-field">
-        <span className="daly-field-label">{ts.yldMethodLabel}</span>
+        <label className="daly-field-label" htmlFor="daly-yld-method">{ts.yldMethodLabel}</label>
         <select
+          id="daly-yld-method"
           className="daly-method-select"
           value={value.yldMethod}
           onChange={(e) => {
@@ -167,8 +171,9 @@ export default function DalyInput({ value, onChange, lang }: Props) {
             </div>
             <div className="daly-row-fields">
               <div className="daly-field">
-                <span className="daly-field-label">{ts.yldLabelLabel}</span>
+                <label className="daly-field-label" htmlFor={`daly-yld-label-${row.id}`}>{ts.yldLabelLabel}</label>
                 <input
+                  id={`daly-yld-label-${row.id}`}
                   type="text"
                   className="daly-text-input"
                   value={row.label}
@@ -176,8 +181,9 @@ export default function DalyInput({ value, onChange, lang }: Props) {
                 />
               </div>
               <div className="daly-field">
-                <span className="daly-field-label">{ts.yldCasesLabel}</span>
+                <label className="daly-field-label" htmlFor={`daly-yld-cases-${row.id}`}>{ts.yldCasesLabel}</label>
                 <input
+                  id={`daly-yld-cases-${row.id}`}
                   type="number"
                   inputMode="decimal"
                   min={0}
@@ -191,8 +197,9 @@ export default function DalyInput({ value, onChange, lang }: Props) {
                 <span className="daly-hint">{ts.yldCasesHint}</span>
               </div>
               <div className="daly-field">
-                <span className="daly-field-label">{ts.yldDwLabel}</span>
+                <label className="daly-field-label" htmlFor={`daly-yld-dw-${row.id}`}>{ts.yldDwLabel}</label>
                 <input
+                  id={`daly-yld-dw-${row.id}`}
                   type="number"
                   inputMode="decimal"
                   min={0}
@@ -209,8 +216,9 @@ export default function DalyInput({ value, onChange, lang }: Props) {
               </div>
               {value.yldMethod === "incidence" && (
                 <div className="daly-field">
-                  <span className="daly-field-label">{ts.yldDurationLabel}</span>
+                  <label className="daly-field-label" htmlFor={`daly-yld-duration-${row.id}`}>{ts.yldDurationLabel}</label>
                   <input
+                    id={`daly-yld-duration-${row.id}`}
                     type="number"
                     inputMode="decimal"
                     min={0}

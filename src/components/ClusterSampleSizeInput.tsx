@@ -14,8 +14,9 @@ export default function ClusterSampleSizeInput({ value, onChange, lang }: Props)
   return (
     <div className="css-input-wrapper">
       <div className="css-field">
-        <span className="css-field-label">{t.srsSampleSizeLabel}</span>
+        <label className="css-field-label" htmlFor="css-srs-sample-size">{t.srsSampleSizeLabel}</label>
         <input
+          id="css-srs-sample-size"
           type="number"
           inputMode="decimal"
           min={1}
@@ -30,8 +31,9 @@ export default function ClusterSampleSizeInput({ value, onChange, lang }: Props)
       </div>
 
       <div className="css-field">
-        <span className="css-field-label">{t.avgClusterSizeLabel}</span>
+        <label className="css-field-label" htmlFor="css-avg-cluster-size">{t.avgClusterSizeLabel}</label>
         <input
+          id="css-avg-cluster-size"
           type="number"
           inputMode="decimal"
           min={1}
@@ -46,8 +48,9 @@ export default function ClusterSampleSizeInput({ value, onChange, lang }: Props)
       </div>
 
       <div className="css-field">
-        <span className="css-field-label">{t.iccLabel}</span>
+        <label className="css-field-label" htmlFor="css-icc">{t.iccLabel}</label>
         <input
+          id="css-icc"
           type="number"
           inputMode="decimal"
           min={0}

@@ -23,8 +23,9 @@ export default function BayesianDiagnosticInput({ value, onChange, lang }: Props
   return (
     <div className="clin-input-wrapper">
       <div className="clin-field">
-        <span className="clin-field-label">{ts.modeLabel}</span>
+        <label className="clin-field-label" htmlFor="bayes-mode">{ts.modeLabel}</label>
         <select
+          id="bayes-mode"
           className="clin-method-select"
           value={value.mode}
           onChange={(e) => setMode(e.target.value as BayesInputType["mode"])}
@@ -37,8 +38,9 @@ export default function BayesianDiagnosticInput({ value, onChange, lang }: Props
       {value.mode === "direct" ? (
         <>
           <div className="clin-field">
-            <span className="clin-field-label">{t.sensitivityLabel}</span>
+            <label className="clin-field-label" htmlFor="bayes-sensitivity">{t.sensitivityLabel}</label>
             <input
+              id="bayes-sensitivity"
               type="number"
               inputMode="decimal"
               min={0}
@@ -51,8 +53,9 @@ export default function BayesianDiagnosticInput({ value, onChange, lang }: Props
             <span className="clin-hint">{t.sensitivityHint}</span>
           </div>
           <div className="clin-field">
-            <span className="clin-field-label">{t.specificityLabel}</span>
+            <label className="clin-field-label" htmlFor="bayes-specificity">{t.specificityLabel}</label>
             <input
+              id="bayes-specificity"
               type="number"
               inputMode="decimal"
               min={0}
@@ -65,8 +68,9 @@ export default function BayesianDiagnosticInput({ value, onChange, lang }: Props
             <span className="clin-hint">{t.specificityHint}</span>
           </div>
           <div className="clin-field">
-            <span className="clin-field-label">{t.prevalenceLabel}</span>
+            <label className="clin-field-label" htmlFor="bayes-prevalence">{t.prevalenceLabel}</label>
             <input
+              id="bayes-prevalence"
               type="number"
               inputMode="decimal"
               min={0}
@@ -82,8 +86,9 @@ export default function BayesianDiagnosticInput({ value, onChange, lang }: Props
       ) : (
         <div className="clin-grid-2">
           <div className="clin-field">
-            <span className="clin-field-label">{t.tpLabel}</span>
+            <label className="clin-field-label" htmlFor="bayes-tp">{t.tpLabel}</label>
             <input
+              id="bayes-tp"
               type="number"
               inputMode="decimal"
               min={0}
@@ -94,8 +99,9 @@ export default function BayesianDiagnosticInput({ value, onChange, lang }: Props
             />
           </div>
           <div className="clin-field">
-            <span className="clin-field-label">{t.fnLabel}</span>
+            <label className="clin-field-label" htmlFor="bayes-fn">{t.fnLabel}</label>
             <input
+              id="bayes-fn"
               type="number"
               inputMode="decimal"
               min={0}
@@ -106,8 +112,9 @@ export default function BayesianDiagnosticInput({ value, onChange, lang }: Props
             />
           </div>
           <div className="clin-field">
-            <span className="clin-field-label">{t.tnLabel}</span>
+            <label className="clin-field-label" htmlFor="bayes-tn">{t.tnLabel}</label>
             <input
+              id="bayes-tn"
               type="number"
               inputMode="decimal"
               min={0}
@@ -118,8 +125,9 @@ export default function BayesianDiagnosticInput({ value, onChange, lang }: Props
             />
           </div>
           <div className="clin-field">
-            <span className="clin-field-label">{t.fpLabel}</span>
+            <label className="clin-field-label" htmlFor="bayes-fp">{t.fpLabel}</label>
             <input
+              id="bayes-fp"
               type="number"
               inputMode="decimal"
               min={0}

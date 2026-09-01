@@ -19,8 +19,9 @@ export default function SmdInputComponent({ value, onChange, lang }: Props) {
       </div>
       <div className="clin-grid-2">
         <div className="clin-field">
-          <span className="clin-field-label">{t.meanLabel}</span>
+          <label className="clin-field-label" htmlFor="smd-mean1">{t.meanLabel}</label>
           <input
+            id="smd-mean1"
             type="number"
             inputMode="decimal"
             step={0.01}
@@ -30,8 +31,9 @@ export default function SmdInputComponent({ value, onChange, lang }: Props) {
           />
         </div>
         <div className="clin-field">
-          <span className="clin-field-label">{t.sdLabel}</span>
+          <label className="clin-field-label" htmlFor="smd-sd1">{t.sdLabel}</label>
           <input
+            id="smd-sd1"
             type="number"
             inputMode="decimal"
             min={0}
@@ -42,8 +44,9 @@ export default function SmdInputComponent({ value, onChange, lang }: Props) {
           />
         </div>
         <div className="clin-field">
-          <span className="clin-field-label">{t.nLabel}</span>
+          <label className="clin-field-label" htmlFor="smd-n1">{t.nLabel}</label>
           <input
+            id="smd-n1"
             type="number"
             inputMode="decimal"
             min={2}
@@ -58,8 +61,9 @@ export default function SmdInputComponent({ value, onChange, lang }: Props) {
       <div className="clin-group-title">{t.group2Title}</div>
       <div className="clin-grid-2">
         <div className="clin-field">
-          <span className="clin-field-label">{t.meanLabel}</span>
+          <label className="clin-field-label" htmlFor="smd-mean2">{t.meanLabel}</label>
           <input
+            id="smd-mean2"
             type="number"
             inputMode="decimal"
             step={0.01}
@@ -69,8 +73,9 @@ export default function SmdInputComponent({ value, onChange, lang }: Props) {
           />
         </div>
         <div className="clin-field">
-          <span className="clin-field-label">{t.sdLabel}</span>
+          <label className="clin-field-label" htmlFor="smd-sd2">{t.sdLabel}</label>
           <input
+            id="smd-sd2"
             type="number"
             inputMode="decimal"
             min={0}
@@ -81,8 +86,9 @@ export default function SmdInputComponent({ value, onChange, lang }: Props) {
           />
         </div>
         <div className="clin-field">
-          <span className="clin-field-label">{t.nLabel}</span>
+          <label className="clin-field-label" htmlFor="smd-n2">{t.nLabel}</label>
           <input
+            id="smd-n2"
             type="number"
             inputMode="decimal"
             min={2}

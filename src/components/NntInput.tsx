@@ -15,8 +15,9 @@ export default function NntInputComponent({ value, onChange, lang }: Props) {
   return (
     <div className="clin-input-wrapper">
       <div className="clin-field">
-        <span className="clin-field-label">{t.controlEventRateLabel}</span>
+        <label className="clin-field-label" htmlFor="nnt-cer">{t.controlEventRateLabel}</label>
         <input
+          id="nnt-cer"
           type="number"
           inputMode="decimal"
           min={0}
@@ -31,8 +32,9 @@ export default function NntInputComponent({ value, onChange, lang }: Props) {
         <span className="clin-hint">{t.controlEventRateHint}</span>
       </div>
       <div className="clin-field">
-        <span className="clin-field-label">{t.experimentalEventRateLabel}</span>
+        <label className="clin-field-label" htmlFor="nnt-eer">{t.experimentalEventRateLabel}</label>
         <input
+          id="nnt-eer"
           type="number"
           inputMode="decimal"
           min={0}

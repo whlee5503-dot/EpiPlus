@@ -51,8 +51,9 @@ export default function StratifiedSampleSizeInput({ value, onChange, lang }: Pro
   return (
     <div className="sss-input-wrapper">
       <div className="sss-field">
-        <span className="sss-field-label">{t.totalSampleSizeLabel}</span>
+        <label className="sss-field-label" htmlFor="sss-total-sample-size">{t.totalSampleSizeLabel}</label>
         <input
+          id="sss-total-sample-size"
           type="number"
           inputMode="decimal"
           min={1}
@@ -67,8 +68,9 @@ export default function StratifiedSampleSizeInput({ value, onChange, lang }: Pro
       </div>
 
       <div className="sss-field">
-        <span className="sss-field-label">{tMethod.methodLabel}</span>
+        <label className="sss-field-label" htmlFor="sss-method">{tMethod.methodLabel}</label>
         <select
+          id="sss-method"
           className="sss-method-select"
           value={value.method}
           onChange={(e) => onChange({ ...value, method: e.target.value as AllocationMethod })}
@@ -100,8 +102,9 @@ export default function StratifiedSampleSizeInput({ value, onChange, lang }: Pro
             </div>
             <div className="sss-stratum-fields">
               <div className="sss-field">
-                <span className="sss-field-label">{t.strataLabelLabel}</span>
+                <label className="sss-field-label" htmlFor={`sss-label-${s.id}`}>{t.strataLabelLabel}</label>
                 <input
+                  id={`sss-label-${s.id}`}
                   type="text"
                   className="sss-text-input"
                   value={s.label}
@@ -109,8 +112,9 @@ export default function StratifiedSampleSizeInput({ value, onChange, lang }: Pro
                 />
               </div>
               <div className="sss-field">
-                <span className="sss-field-label">{t.populationSizeLabel}</span>
+                <label className="sss-field-label" htmlFor={`sss-pop-${s.id}`}>{t.populationSizeLabel}</label>
                 <input
+                  id={`sss-pop-${s.id}`}
                   type="number"
                   inputMode="decimal"
                   min={1}
@@ -123,8 +127,9 @@ export default function StratifiedSampleSizeInput({ value, onChange, lang }: Pro
                 />
               </div>
               <div className="sss-field">
-                <span className="sss-field-label">{t.stdDevLabel}</span>
+                <label className="sss-field-label" htmlFor={`sss-sd-${s.id}`}>{t.stdDevLabel}</label>
                 <input
+                  id={`sss-sd-${s.id}`}
                   type="number"
                   inputMode="decimal"
                   min={0}

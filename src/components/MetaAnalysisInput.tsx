@@ -50,8 +50,9 @@ export default function MetaAnalysisInput({ value, onChange, lang }: Props) {
   return (
     <div className="meta-input-wrapper">
       <div className="meta-field">
-        <span className="meta-field-label">{ts.effectTypeLabel}</span>
+        <label className="meta-field-label" htmlFor="meta-effect-type">{ts.effectTypeLabel}</label>
         <select
+          id="meta-effect-type"
           className="meta-method-select"
           value={value.effectType}
           onChange={(e) => setEffectType(e.target.value as EffectType)}
@@ -82,8 +83,9 @@ export default function MetaAnalysisInput({ value, onChange, lang }: Props) {
             </div>
             <div className="meta-row-fields">
               <div className="meta-field">
-                <span className="meta-field-label">{ts.studyLabelLabel}</span>
+                <label className="meta-field-label" htmlFor={`meta-label-${s.id}`}>{ts.studyLabelLabel}</label>
                 <input
+                  id={`meta-label-${s.id}`}
                   type="text"
                   className="meta-text-input"
                   value={s.label}
@@ -91,8 +93,9 @@ export default function MetaAnalysisInput({ value, onChange, lang }: Props) {
                 />
               </div>
               <div className="meta-field">
-                <span className="meta-field-label">{ts.effectLabel}</span>
+                <label className="meta-field-label" htmlFor={`meta-effect-${s.id}`}>{ts.effectLabel}</label>
                 <input
+                  id={`meta-effect-${s.id}`}
                   type="number"
                   inputMode="decimal"
                   step={0.01}
@@ -102,8 +105,9 @@ export default function MetaAnalysisInput({ value, onChange, lang }: Props) {
                 />
               </div>
               <div className="meta-field">
-                <span className="meta-field-label">{ts.seLabel}</span>
+                <label className="meta-field-label" htmlFor={`meta-se-${s.id}`}>{ts.seLabel}</label>
                 <input
+                  id={`meta-se-${s.id}`}
                   type="number"
                   inputMode="decimal"
                   min={0}

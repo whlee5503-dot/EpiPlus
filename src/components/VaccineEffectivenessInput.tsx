@@ -29,8 +29,9 @@ export default function VaccineEffectivenessInput({ value, onChange, lang }: Pro
   return (
     <div className="clin-input-wrapper">
       <div className="clin-field">
-        <span className="clin-field-label">{ts.modeLabel}</span>
+        <label className="clin-field-label" htmlFor="ve-mode">{ts.modeLabel}</label>
         <select
+          id="ve-mode"
           className="clin-method-select"
           value={value.mode}
           onChange={(e) => setMode(e.target.value as VeInputType["mode"])}
@@ -43,8 +44,9 @@ export default function VaccineEffectivenessInput({ value, onChange, lang }: Pro
       {value.mode === "rates" ? (
         <>
           <div className="clin-field">
-            <span className="clin-field-label">{t.arVaccinatedLabel}</span>
+            <label className="clin-field-label" htmlFor="ve-ar-vaccinated">{t.arVaccinatedLabel}</label>
             <input
+              id="ve-ar-vaccinated"
               type="number"
               inputMode="decimal"
               min={0}
@@ -59,8 +61,9 @@ export default function VaccineEffectivenessInput({ value, onChange, lang }: Pro
             <span className="clin-hint">{t.arVaccinatedHint}</span>
           </div>
           <div className="clin-field">
-            <span className="clin-field-label">{t.arUnvaccinatedLabel}</span>
+            <label className="clin-field-label" htmlFor="ve-ar-unvaccinated">{t.arUnvaccinatedLabel}</label>
             <input
+              id="ve-ar-unvaccinated"
               type="number"
               inputMode="decimal"
               min={0}
@@ -78,8 +81,9 @@ export default function VaccineEffectivenessInput({ value, onChange, lang }: Pro
       ) : (
         <div className="clin-grid-2">
           <div className="clin-field">
-            <span className="clin-field-label">{t.casesVaccinatedLabel}</span>
+            <label className="clin-field-label" htmlFor="ve-cases-vaccinated">{t.casesVaccinatedLabel}</label>
             <input
+              id="ve-cases-vaccinated"
               type="number"
               inputMode="decimal"
               min={0}
@@ -92,8 +96,9 @@ export default function VaccineEffectivenessInput({ value, onChange, lang }: Pro
             />
           </div>
           <div className="clin-field">
-            <span className="clin-field-label">{t.totalVaccinatedLabel}</span>
+            <label className="clin-field-label" htmlFor="ve-total-vaccinated">{t.totalVaccinatedLabel}</label>
             <input
+              id="ve-total-vaccinated"
               type="number"
               inputMode="decimal"
               min={0}
@@ -106,8 +111,9 @@ export default function VaccineEffectivenessInput({ value, onChange, lang }: Pro
             />
           </div>
           <div className="clin-field">
-            <span className="clin-field-label">{t.casesUnvaccinatedLabel}</span>
+            <label className="clin-field-label" htmlFor="ve-cases-unvaccinated">{t.casesUnvaccinatedLabel}</label>
             <input
+              id="ve-cases-unvaccinated"
               type="number"
               inputMode="decimal"
               min={0}
@@ -120,8 +126,9 @@ export default function VaccineEffectivenessInput({ value, onChange, lang }: Pro
             />
           </div>
           <div className="clin-field">
-            <span className="clin-field-label">{t.totalUnvaccinatedLabel}</span>
+            <label className="clin-field-label" htmlFor="ve-total-unvaccinated">{t.totalUnvaccinatedLabel}</label>
             <input
+              id="ve-total-unvaccinated"
               type="number"
               inputMode="decimal"
               min={0}

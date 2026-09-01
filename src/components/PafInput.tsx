@@ -29,8 +29,9 @@ export default function PafInput({ value, onChange, lang }: Props) {
   return (
     <div className="paf-input-wrapper">
       <div className="paf-field">
-        <span className="paf-field-label">{ts.modeLabel}</span>
+        <label className="paf-field-label" htmlFor="paf-mode">{ts.modeLabel}</label>
         <select
+          id="paf-mode"
           className="paf-method-select"
           value={value.mode}
           onChange={(e) => setMode(e.target.value as PafInputType["mode"])}
@@ -43,8 +44,9 @@ export default function PafInput({ value, onChange, lang }: Props) {
       {value.mode === "direct" ? (
         <>
           <div className="paf-field">
-            <span className="paf-field-label">{t.exposurePrevalenceLabel}</span>
+            <label className="paf-field-label" htmlFor="paf-exposure-prevalence">{t.exposurePrevalenceLabel}</label>
             <input
+              id="paf-exposure-prevalence"
               type="number"
               inputMode="decimal"
               min={0}
@@ -62,8 +64,9 @@ export default function PafInput({ value, onChange, lang }: Props) {
             <span className="paf-hint">{t.exposurePrevalenceHint}</span>
           </div>
           <div className="paf-field">
-            <span className="paf-field-label">{t.relativeRiskLabel}</span>
+            <label className="paf-field-label" htmlFor="paf-relative-risk">{t.relativeRiskLabel}</label>
             <input
+              id="paf-relative-risk"
               type="number"
               inputMode="decimal"
               min={0}
@@ -80,8 +83,9 @@ export default function PafInput({ value, onChange, lang }: Props) {
       ) : (
         <div className="paf-table-grid">
           <div className="paf-field">
-            <span className="paf-field-label">{t.exposedCasesLabel}</span>
+            <label className="paf-field-label" htmlFor="paf-exposed-cases">{t.exposedCasesLabel}</label>
             <input
+              id="paf-exposed-cases"
               type="number"
               inputMode="decimal"
               min={0}
@@ -94,8 +98,9 @@ export default function PafInput({ value, onChange, lang }: Props) {
             />
           </div>
           <div className="paf-field">
-            <span className="paf-field-label">{t.exposedNonCasesLabel}</span>
+            <label className="paf-field-label" htmlFor="paf-exposed-noncases">{t.exposedNonCasesLabel}</label>
             <input
+              id="paf-exposed-noncases"
               type="number"
               inputMode="decimal"
               min={0}
@@ -108,8 +113,9 @@ export default function PafInput({ value, onChange, lang }: Props) {
             />
           </div>
           <div className="paf-field">
-            <span className="paf-field-label">{t.unexposedCasesLabel}</span>
+            <label className="paf-field-label" htmlFor="paf-unexposed-cases">{t.unexposedCasesLabel}</label>
             <input
+              id="paf-unexposed-cases"
               type="number"
               inputMode="decimal"
               min={0}
@@ -122,8 +128,9 @@ export default function PafInput({ value, onChange, lang }: Props) {
             />
           </div>
           <div className="paf-field">
-            <span className="paf-field-label">{t.unexposedNonCasesLabel}</span>
+            <label className="paf-field-label" htmlFor="paf-unexposed-noncases">{t.unexposedNonCasesLabel}</label>
             <input
+              id="paf-unexposed-noncases"
               type="number"
               inputMode="decimal"
               min={0}

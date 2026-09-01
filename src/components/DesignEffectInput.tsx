@@ -14,8 +14,9 @@ export default function DesignEffectInput({ value, onChange, lang }: Props) {
   return (
     <div className="de-input-wrapper">
       <div className="de-field">
-        <span className="de-field-label">{t.avgClusterSizeLabel}</span>
+        <label className="de-field-label" htmlFor="de-avg-cluster-size">{t.avgClusterSizeLabel}</label>
         <input
+          id="de-avg-cluster-size"
           type="number"
           inputMode="decimal"
           min={1}
@@ -30,8 +31,9 @@ export default function DesignEffectInput({ value, onChange, lang }: Props) {
       </div>
 
       <div className="de-field">
-        <span className="de-field-label">{t.iccLabel}</span>
+        <label className="de-field-label" htmlFor="de-icc">{t.iccLabel}</label>
         <input
+          id="de-icc"
           type="number"
           inputMode="decimal"
           min={0}
@@ -47,8 +49,9 @@ export default function DesignEffectInput({ value, onChange, lang }: Props) {
       <div className="de-section-title">{t.sectionEffectiveTitle}</div>
 
       <div className="de-field">
-        <span className="de-field-label">{t.nominalSampleSizeLabel}</span>
+        <label className="de-field-label" htmlFor="de-nominal-sample-size">{t.nominalSampleSizeLabel}</label>
         <input
+          id="de-nominal-sample-size"
           type="number"
           inputMode="decimal"
           min={0}
@@ -68,8 +71,9 @@ export default function DesignEffectInput({ value, onChange, lang }: Props) {
       <div className="de-section-title">{t.sectionAdjustedTitle}</div>
 
       <div className="de-field">
-        <span className="de-field-label">{t.individualSampleSizeLabel}</span>
+        <label className="de-field-label" htmlFor="de-individual-sample-size">{t.individualSampleSizeLabel}</label>
         <input
+          id="de-individual-sample-size"
           type="number"
           inputMode="decimal"
           min={0}

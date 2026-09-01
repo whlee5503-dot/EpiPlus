@@ -17,7 +17,9 @@
   --border-color-light: #e4ece4;
   --text-primary: #1a2e1a;
   --text-secondary: #4a624a;
-  --text-muted: #7a927a;
+  --text-muted: #557055; /* WCAG AA fix: was #7a927a (3.4:1 on white, fails
+    the 4.5:1 normal-text minimum); this darker tone gives ~4.6-5.5:1
+    against every light-mode surface color used in the app. */
   --text-on-primary: #ffffff;
   --shadow-sm: 0 1px 3px rgba(26, 46, 26, 0.08);
   --shadow-md: 0 4px 12px rgba(26, 46, 26, 0.10);
@@ -52,7 +54,8 @@
   --border-color-light: #233023;
   --text-primary: #e8f0e8;
   --text-secondary: #a8c0a8;
-  --text-muted: #6a856a;
+  --text-muted: #8aa88a; /* WCAG AA fix: was #6a856a (3.7:1 on the dark
+    surfaces here); this lighter tone gives ~5.7:1 against bg-surface-2. */
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
