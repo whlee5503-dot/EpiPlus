@@ -1,0 +1,113 @@
+.daly-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+.daly-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+.daly-field-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+}
+.daly-number-input,
+.daly-text-input,
+.daly-method-select {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface-2);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  box-sizing: border-box;
+}
+.daly-number-input {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+}
+.daly-number-input:focus,
+.daly-text-input:focus,
+.daly-method-select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-focus);
+}
+.daly-hint {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+.daly-section-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  border-top: 1px solid var(--border-color);
+  padding-top: var(--space-3);
+  margin-top: var(--space-1);
+}
+.daly-row-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.daly-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface-2);
+}
+.daly-row-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+.daly-row-fields {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+}
+@media (max-width: 640px) {
+  .daly-row-fields {
+    grid-template-columns: 1fr;
+  }
+}
+.daly-remove-btn {
+  border: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  padding: 2px var(--space-2);
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+.daly-remove-btn:hover {
+  border-color: var(--color-danger, #d64545);
+  color: var(--color-danger, #d64545);
+}
+.daly-add-btn {
+  align-self: flex-start;
+  border: 1px dashed var(--border-color);
+  background: transparent;
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.daly-add-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}

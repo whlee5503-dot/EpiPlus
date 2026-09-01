@@ -1,0 +1,66 @@
+.clin-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+.clin-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+.clin-field-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+}
+.clin-number-input,
+.clin-method-select {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface-2);
+  color: var(--text-primary);
+  box-sizing: border-box;
+}
+.clin-number-input {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+}
+.clin-method-select {
+  font-size: 0.9rem;
+}
+.clin-number-input:focus,
+.clin-method-select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-focus);
+}
+.clin-hint {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+.clin-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+@media (max-width: 640px) {
+  .clin-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+.clin-group-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  border-top: 1px solid var(--border-color);
+  padding-top: var(--space-3);
+  margin-top: var(--space-1);
+}

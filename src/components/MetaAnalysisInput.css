@@ -1,0 +1,150 @@
+.meta-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+.meta-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+.meta-field-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+}
+.meta-method-select,
+.meta-number-input,
+.meta-text-input {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface-2);
+  color: var(--text-primary);
+  box-sizing: border-box;
+}
+.meta-number-input {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+}
+.meta-method-select,
+.meta-text-input {
+  font-size: 0.9rem;
+}
+.meta-method-select:focus,
+.meta-number-input:focus,
+.meta-text-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-focus);
+}
+.meta-hint {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+.meta-section-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.meta-row-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.meta-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface-2);
+}
+.meta-row-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+.meta-row-fields {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: var(--space-2);
+}
+@media (max-width: 640px) {
+  .meta-row-fields {
+    grid-template-columns: 1fr;
+  }
+}
+.meta-remove-btn {
+  border: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  padding: 2px var(--space-2);
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+.meta-remove-btn:hover {
+  border-color: var(--color-danger, #d64545);
+  color: var(--color-danger, #d64545);
+}
+.meta-add-btn {
+  align-self: flex-start;
+  border: 1px dashed var(--border-color);
+  background: transparent;
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.meta-add-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* Forest plot */
+.meta-forest-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  overflow-x: auto;
+}
+.meta-forest-svg text {
+  fill: var(--text-primary);
+  font-size: 12px;
+}
+.meta-forest-svg .meta-forest-axis {
+  stroke: var(--border-color);
+}
+.meta-forest-svg .meta-forest-nullline {
+  stroke: var(--text-muted);
+  stroke-dasharray: 3 3;
+}
+.meta-forest-svg .meta-forest-ci {
+  stroke: var(--text-primary);
+  stroke-width: 1.5;
+}
+.meta-forest-svg .meta-forest-box {
+  fill: var(--color-primary);
+  stroke: var(--color-primary);
+}
+.meta-forest-svg .meta-forest-diamond {
+  fill: var(--color-primary);
+  stroke: var(--color-primary);
+}
+.meta-forest-svg .meta-forest-diamond-random {
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 1.5;
+}

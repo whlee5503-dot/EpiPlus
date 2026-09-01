@@ -1,0 +1,130 @@
+.pois-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+.pois-note {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+}
+.pois-section-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.pois-row-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.pois-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface-2);
+}
+.pois-row.pois-row-reference {
+  border-color: var(--color-primary);
+}
+.pois-row-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+.pois-row-fields {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: var(--space-2);
+}
+@media (max-width: 640px) {
+  .pois-row-fields {
+    grid-template-columns: 1fr;
+  }
+}
+.pois-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+.pois-field-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+}
+.pois-number-input,
+.pois-text-input {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  box-sizing: border-box;
+}
+.pois-number-input {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+}
+.pois-number-input:focus,
+.pois-text-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-focus);
+}
+.pois-ref-btn {
+  border: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  padding: 2px var(--space-2);
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+.pois-ref-btn.pois-ref-btn-active {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  font-weight: 700;
+  cursor: default;
+}
+.pois-remove-btn {
+  border: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  padding: 2px var(--space-2);
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+.pois-remove-btn:hover {
+  border-color: var(--color-danger, #d64545);
+  color: var(--color-danger, #d64545);
+}
+.pois-add-btn {
+  align-self: flex-start;
+  border: 1px dashed var(--border-color);
+  background: transparent;
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.pois-add-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}

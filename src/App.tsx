@@ -5,6 +5,23 @@ import { translations } from "./i18n/translations";
 import type { Lang } from "./i18n/translations";
 
 const DesignEffectAnalysis = lazy(() => import("./components/DesignEffectAnalysis"));
+const ClusterSampleSizeAnalysis = lazy(() => import("./components/ClusterSampleSizeAnalysis"));
+const StratifiedSampleSizeAnalysis = lazy(
+  () => import("./components/StratifiedSampleSizeAnalysis")
+);
+const DalyAnalysis = lazy(() => import("./components/DalyAnalysis"));
+const PafAnalysis = lazy(() => import("./components/PafAnalysis"));
+const AgeStandardizationAnalysis = lazy(
+  () => import("./components/AgeStandardizationAnalysis")
+);
+const VaccineEffectivenessAnalysis = lazy(
+  () => import("./components/VaccineEffectivenessAnalysis")
+);
+const NntAnalysis = lazy(() => import("./components/NntAnalysis"));
+const SmdAnalysis = lazy(() => import("./components/SmdAnalysis"));
+const PoissonRegressionAnalysis = lazy(() => import("./components/PoissonRegressionAnalysis"));
+const BayesianDiagnosticAnalysis = lazy(() => import("./components/BayesianDiagnosticAnalysis"));
+const MetaAnalysisAnalysis = lazy(() => import("./components/MetaAnalysisAnalysis"));
 
 interface ModuleConfig {
   id: string;
@@ -17,6 +34,61 @@ const MODULES: ModuleConfig[] = [
     id: "designEffect",
     navLabel: (lang) => translations[lang].samplingdesign.subnav.designEffect,
     Component: DesignEffectAnalysis,
+  },
+  {
+    id: "clusterSampleSize",
+    navLabel: (lang) => translations[lang].samplingdesign.subnav.clusterSampleSize,
+    Component: ClusterSampleSizeAnalysis,
+  },
+  {
+    id: "stratifiedSampleSize",
+    navLabel: (lang) => translations[lang].samplingdesign.subnav.stratifiedSampleSize,
+    Component: StratifiedSampleSizeAnalysis,
+  },
+  {
+    id: "daly",
+    navLabel: (lang) => translations[lang].populationburden.subnav.daly,
+    Component: DalyAnalysis,
+  },
+  {
+    id: "paf",
+    navLabel: (lang) => translations[lang].populationburden.subnav.paf,
+    Component: PafAnalysis,
+  },
+  {
+    id: "ageStandardization",
+    navLabel: (lang) => translations[lang].populationburden.subnav.ageStandardization,
+    Component: AgeStandardizationAnalysis,
+  },
+  {
+    id: "vaccineEffectiveness",
+    navLabel: (lang) => translations[lang].clinical.subnav.vaccineEffectiveness,
+    Component: VaccineEffectivenessAnalysis,
+  },
+  {
+    id: "nnt",
+    navLabel: (lang) => translations[lang].clinical.subnav.nnt,
+    Component: NntAnalysis,
+  },
+  {
+    id: "smd",
+    navLabel: (lang) => translations[lang].clinical.subnav.smd,
+    Component: SmdAnalysis,
+  },
+  {
+    id: "poissonRegression",
+    navLabel: (lang) => translations[lang].statisticalmodeling.subnav.poissonRegression,
+    Component: PoissonRegressionAnalysis,
+  },
+  {
+    id: "bayesianDiagnostic",
+    navLabel: (lang) => translations[lang].statisticalmodeling.subnav.bayesianDiagnostic,
+    Component: BayesianDiagnosticAnalysis,
+  },
+  {
+    id: "metaAnalysis",
+    navLabel: (lang) => translations[lang].metaanalysis.subnav.metaAnalysis,
+    Component: MetaAnalysisAnalysis,
   },
 ];
 
