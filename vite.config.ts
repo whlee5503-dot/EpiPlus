@@ -25,18 +25,49 @@ export default defineConfig({
         ],
       },
       workbox: {
-        // Precache every built asset — including all JS chunks — at
-        // service-worker install time, so every lazy-loaded calculator
-        // module is available offline immediately after first install,
-        // not only after the user has visited that module once online.
-        // woff (not woff2) is intentionally excluded: it only exists as a
-        // fallback for browsers that predate woff2 support (effectively
-        // just legacy IE at this point), but Workbox precaches every file
-        // matching the glob regardless of which one a given browser would
-        // actually pick — so including both formats would silently double
-        // the font payload on every install, which matters a lot on a
-        // slow/metered connection.
-        globPatterns: ['**/*.{js,html,css,ico,png,svg,webmanifest,woff2}'],
+        // App-shell precaching, matching EpiCalc's approach: only the
+        // HTML/CSS/icons/fonts needed for the very first paint are
+        // downloaded at install time. This keeps the initial PWA install
+        // small and fast on slow/metered connections (2G/3G) — the
+        // scenario this app explicitly targets for field health workers.
+        // Fonts are self-hosted (see src/styles/fonts.css) and included
+        // here since they're needed immediately for correct first-paint
+        // rendering, not just for a specific calculator.
+        globPatterns: ['**/*.{html,css,ico,png,svg,webmanifest,woff2}'],
+
+        // JS chunks (the app shell's own bundle plus every lazy-loaded
+        // calculator module) are NOT precached upfront. Instead they're
+        // cached the first time each one is actually requested, via
+        // CacheFirst runtime caching — so a calculator the user has
+        // opened at least once while online stays available offline
+        // afterwards, without forcing every user to download all 12
+        // calculators' worth of JS just to install the app.
+        runtimeCaching: [
+          {
+            // Same-origin JS chunks (app shell + lazy calculator modules)
+            urlPattern: /\.js$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'js-chunks',
+              expiration: {
+                maxEntries: 60,
+                maxAgeSeconds: 30 * 24 * 60 * 60, // 30 days
+              },
+            },
+          },
+          {
+            // Cross-origin JS, if any is ever introduced
+            urlPattern: /^https:\/\/.*\.js$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'vendor-chunks',
+              expiration: {
+                maxEntries: 40,
+                maxAgeSeconds: 30 * 24 * 60 * 60,
+              },
+            },
+          },
+        ],
       },
     }),
   ],
