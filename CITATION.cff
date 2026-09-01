@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use EpiPlus in your research or work, please cite it as below."
+title: "EpiPlus: Epidemiology & Biostatistics Calculator Suite"
+type: software
+authors:
+  - family-names: "Lee"
+    given-names: "Won Ho"
+repository-code: "https://github.com/whlee5503-dot/EpiPlus"
+url: "https://epiplus.phtlab.org"
+license: MIT
+version: 1.0.0
+date-released: "2026-09-02"
+keywords:
+  - epidemiology
+  - biostatistics
+  - public health
+  - meta-analysis
+  - survey sampling
+  - digital public good
+  - open source
+abstract: >-
+  EpiPlus is a free, open-source epidemiology and biostatistics calculator
+  suite implementing formulas not already covered by OpenEpi, EpiCalc, or
+  EpiStat: survey sampling design (Design Effect, cluster and stratified
+  sample size), population burden indicators (DALY, PAF, age
+  standardization), clinical and effect measures (vaccine effectiveness,
+  NNT/NNH, SMD), statistical modeling (Poisson regression, Bayesian
+  diagnostic test performance), and meta-analysis (fixed- and
+  random-effects pooling with forest plots). Every calculator is validated
+  against independent published worked examples, documented in
+  VALIDATION.md. The app runs entirely client-side as an installable,
+  offline-capable Progressive Web App, with no data collection.

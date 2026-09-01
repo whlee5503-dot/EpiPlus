@@ -1,0 +1,35 @@
+{
+  "title": "EpiPlus: Epidemiology & Biostatistics Calculator Suite",
+  "description": "EpiPlus is a free, open-source epidemiology and biostatistics calculator suite implementing formulas not already covered by OpenEpi, EpiCalc, or EpiStat: survey sampling design (Design Effect, cluster and stratified sample size), population burden indicators (DALY, PAF, age standardization), clinical and effect measures (vaccine effectiveness, NNT/NNH, SMD), statistical modeling (Poisson regression, Bayesian diagnostic test performance), and meta-analysis (fixed- and random-effects pooling with forest plots). Every calculator is validated against independent published worked examples, documented in VALIDATION.md. The app runs entirely client-side as an installable, offline-capable Progressive Web App, with no data collection.",
+  "creators": [
+    {
+      "name": "Lee, Won Ho",
+      "affiliation": "PublicHealth Tech Lab"
+    }
+  ],
+  "license": "MIT",
+  "upload_type": "software",
+  "access_right": "open",
+  "keywords": [
+    "epidemiology",
+    "biostatistics",
+    "public health",
+    "meta-analysis",
+    "survey sampling",
+    "digital public good",
+    "open source",
+    "progressive web app"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/whlee5503-dot/EpiPlus",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://epiplus.phtlab.org",
+      "relation": "isIdenticalTo",
+      "scheme": "url"
+    }
+  ]
+}
