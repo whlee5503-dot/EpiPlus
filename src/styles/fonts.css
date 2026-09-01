@@ -1,0 +1,35 @@
+/* Self-hosted fonts via @fontsource — replaces the external
+   fonts.googleapis.com / fonts.gstatic.com @import that previously lived
+   in variables.css. Two reasons this matters for EpiPlus specifically:
+
+   1. Offline support: the PWA service worker only precaches same-origin
+      build assets. Cross-origin font requests are NOT precached by
+      default, so under the old setup, fonts silently failed to load
+      whenever the app was used offline (falling back to system fonts).
+      Self-hosting brings the font files into the same-origin build
+      output, where vite-plugin-pwa's globPatterns can precache them.
+
+   2. Low-bandwidth / high-latency networks (2G/3G): the external @import
+      required sequential round trips (page CSS -> Google Fonts CSS ->
+      Google's font-file CDN) before text could render. Self-hosting
+      collapses this to same-origin requests already covered by the
+      service worker's install-time precache, so — after first install —
+      there are zero additional round trips for fonts at all.
+
+   Weights included match actual usage in the codebase (checked via a
+   grep for font-weight declarations across every stylesheet). */
+
+/* DM Serif Display — headings (--font-display), weight 400 only */
+@import '@fontsource/dm-serif-display/400.css';
+@import '@fontsource/dm-serif-display/400-italic.css';
+
+/* DM Sans — body text (--font-body) */
+@import '@fontsource/dm-sans/400.css';
+@import '@fontsource/dm-sans/500.css';
+@import '@fontsource/dm-sans/600.css';
+@import '@fontsource/dm-sans/700.css';
+@import '@fontsource/dm-sans/400-italic.css';
+
+/* DM Mono — numeric values & formulas (--font-mono) */
+@import '@fontsource/dm-mono/400.css';
+@import '@fontsource/dm-mono/500.css';

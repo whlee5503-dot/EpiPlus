@@ -29,7 +29,14 @@ export default defineConfig({
         // service-worker install time, so every lazy-loaded calculator
         // module is available offline immediately after first install,
         // not only after the user has visited that module once online.
-        globPatterns: ['**/*.{js,html,css,ico,png,svg,webmanifest}'],
+        // woff (not woff2) is intentionally excluded: it only exists as a
+        // fallback for browsers that predate woff2 support (effectively
+        // just legacy IE at this point), but Workbox precaches every file
+        // matching the glob regardless of which one a given browser would
+        // actually pick — so including both formats would silently double
+        // the font payload on every install, which matters a lot on a
+        // slow/metered connection.
+        globPatterns: ['**/*.{js,html,css,ico,png,svg,webmanifest,woff2}'],
       },
     }),
   ],
