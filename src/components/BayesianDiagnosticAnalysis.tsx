@@ -95,6 +95,25 @@ const BayesianDiagnosticAnalysis: React.FC<Props> = ({ lang }) => {
           )
         ) : (
           <>
+            {input.mode === "table2x2" && (
+              <div
+                className={results.usedExternalPrior ? "rxc-info-card" : "rxc-warning-card"}
+                style={{ marginBottom: "var(--space-3)" }}
+              >
+                <span className={results.usedExternalPrior ? "rxc-info-icon" : "rxc-warning-icon"}>
+                  {results.usedExternalPrior ? "i" : "!"}
+                </span>
+                <span className="rxc-warning-text">
+                  {results.usedExternalPrior
+                    ? interp(ts.priorUsedNotice, {
+                      prior: results.prevalence.toFixed(4),
+                      sample: (results.samplePrevalence ?? 0).toFixed(4),
+                    })
+                    : ts.samplePrevalenceNotice}
+                </span>
+              </div>
+            )}
+
             <div className="strat-stats-grid">
               {input.mode === "table2x2" && (
                 <>
@@ -107,7 +126,9 @@ const BayesianDiagnosticAnalysis: React.FC<Props> = ({ lang }) => {
                     <div className="strat-stat-value">{results.specificity.toFixed(4)}</div>
                   </div>
                   <div className="strat-stat-card">
-                    <div className="strat-stat-label">{ts.derivedPrevLabel}</div>
+                    <div className="strat-stat-label">
+                      {results.usedExternalPrior ? ts.priorPrevLabel : ts.derivedPrevLabel}
+                    </div>
                     <div className="strat-stat-value">{results.prevalence.toFixed(4)}</div>
                   </div>
                 </>

@@ -15,8 +15,18 @@
  * Two equivalent input modes are supported:
  *  - "direct": sensitivity, specificity and prevalence are supplied directly.
  *  - "table2x2": a 2x2 test-result/disease-status contingency table is
- *    supplied, from which sensitivity, specificity and prevalence are
- *    derived before applying the formulas above.
+ *    supplied, from which sensitivity and specificity are always derived.
+ *
+ *    IMPORTANT: by default, prevalence is ALSO derived from the same table
+ *    (diseased / total). When Se, Sp and Prev all come from the same sample,
+ *    applying Bayes' theorem is mathematically an identity that reproduces
+ *    the classical PPV = TP/(TP+FP) and NPV = TN/(TN+FN) results exactly --
+ *    it is not a genuine Bayesian use of an external prior. To perform a
+ *    genuine Bayesian calculation (e.g. Se/Sp estimated from a case-control
+ *    study, combined with a real target-population prevalence), supply
+ *    `priorPrevalence` to override the sample-derived prevalence with an
+ *    externally sourced prior. See VALIDATION.md for the distinction and a
+ *    worked example of each case.
  */
 
 export type BayesianDiagnosticInput = BayesDirectInput | BayesTable2x2Input;
@@ -41,13 +51,35 @@ export interface BayesTable2x2Input {
   tn: number;
   /** False positives */
   fp: number;
+  /**
+   * Optional external prior prevalence (0 to 1), e.g. the known prevalence
+   * in the target population. When provided, this OVERRIDES the
+   * sample-derived prevalence (diseased / total) for the PPV/NPV
+   * calculation, making this a genuine Bayesian combination of
+   * sample-derived Se/Sp with an independent prior. When omitted, the
+   * prevalence is derived from the same 2x2 table as Se/Sp (see the
+   * important note in the module docstring above).
+   */
+  priorPrevalence?: number;
 }
 
 export interface BayesianDiagnosticResult {
   mode: BayesianDiagnosticInput["mode"];
   sensitivity: number;
   specificity: number;
+  /** The prevalence actually used in the PPV/NPV calculation (prior or sample-derived). */
   prevalence: number;
+  /**
+   * Whether `prevalence` above came from an externally supplied prior
+   * (true) or was derived from the same sample as Se/Sp (false).
+   */
+  usedExternalPrior: boolean;
+  /**
+   * The prevalence derived from the 2x2 table itself (diseased / total).
+   * Only populated in "table2x2" mode; useful for showing the user what
+   * the "naive" sample prevalence was, alongside the prior actually used.
+   */
+  samplePrevalence?: number;
   ppv: number;
   npv: number;
   positiveLikelihoodRatio: number;
@@ -60,6 +92,8 @@ export function calculateBayesianDiagnostic(
   let sensitivity: number;
   let specificity: number;
   let prevalence: number;
+  let usedExternalPrior = false;
+  let samplePrevalence: number | undefined;
 
   if (input.mode === "direct") {
     sensitivity = input.sensitivity;
@@ -76,7 +110,7 @@ export function calculateBayesianDiagnostic(
       throw new Error("Prevalence must be between 0 and 1");
     }
   } else {
-    const { tp, fn, tn, fp } = input;
+    const { tp, fn, tn, fp, priorPrevalence } = input;
     if (tp < 0 || fn < 0 || tn < 0 || fp < 0) {
       throw new Error("Cell counts must be zero or greater");
     }
@@ -92,7 +126,17 @@ export function calculateBayesianDiagnostic(
 
     sensitivity = tp / diseased;
     specificity = tn / healthy;
-    prevalence = diseased / total;
+    samplePrevalence = diseased / total;
+
+    if (priorPrevalence !== undefined && priorPrevalence !== null && !Number.isNaN(priorPrevalence)) {
+      if (priorPrevalence < 0 || priorPrevalence > 1) {
+        throw new Error("Prior prevalence must be between 0 and 1");
+      }
+      prevalence = priorPrevalence;
+      usedExternalPrior = true;
+    } else {
+      prevalence = samplePrevalence;
+    }
   }
 
   if (specificity >= 1) {
@@ -124,6 +168,8 @@ export function calculateBayesianDiagnostic(
     sensitivity,
     specificity,
     prevalence,
+    usedExternalPrior,
+    samplePrevalence,
     ppv,
     npv,
     positiveLikelihoodRatio,

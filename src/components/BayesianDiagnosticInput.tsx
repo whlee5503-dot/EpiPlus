@@ -84,60 +84,89 @@ export default function BayesianDiagnosticInput({ value, onChange, lang }: Props
           </div>
         </>
       ) : (
-        <div className="clin-grid-2">
-          <div className="clin-field">
-            <label className="clin-field-label" htmlFor="bayes-tp">{t.tpLabel}</label>
+        <>
+          <div className="clin-grid-2">
+            <div className="clin-field">
+              <label className="clin-field-label" htmlFor="bayes-tp">{t.tpLabel}</label>
+              <input
+                id="bayes-tp"
+                type="number"
+                inputMode="decimal"
+                min={0}
+                step={1}
+                className="clin-number-input"
+                value={value.tp}
+                onChange={(e) => onChange({ ...value, tp: parseFloat(e.target.value) || 0 })}
+              />
+            </div>
+            <div className="clin-field">
+              <label className="clin-field-label" htmlFor="bayes-fn">{t.fnLabel}</label>
+              <input
+                id="bayes-fn"
+                type="number"
+                inputMode="decimal"
+                min={0}
+                step={1}
+                className="clin-number-input"
+                value={value.fn}
+                onChange={(e) => onChange({ ...value, fn: parseFloat(e.target.value) || 0 })}
+              />
+            </div>
+            <div className="clin-field">
+              <label className="clin-field-label" htmlFor="bayes-tn">{t.tnLabel}</label>
+              <input
+                id="bayes-tn"
+                type="number"
+                inputMode="decimal"
+                min={0}
+                step={1}
+                className="clin-number-input"
+                value={value.tn}
+                onChange={(e) => onChange({ ...value, tn: parseFloat(e.target.value) || 0 })}
+              />
+            </div>
+            <div className="clin-field">
+              <label className="clin-field-label" htmlFor="bayes-fp">{t.fpLabel}</label>
+              <input
+                id="bayes-fp"
+                type="number"
+                inputMode="decimal"
+                min={0}
+                step={1}
+                className="clin-number-input"
+                value={value.fp}
+                onChange={(e) => onChange({ ...value, fp: parseFloat(e.target.value) || 0 })}
+              />
+            </div>
+          </div>
+
+          <div className="clin-field" style={{ marginTop: "var(--space-3)" }}>
+            <label className="clin-field-label" htmlFor="bayes-prior-prevalence">
+              {t.priorPrevalenceLabel}
+            </label>
             <input
-              id="bayes-tp"
+              id="bayes-prior-prevalence"
               type="number"
               inputMode="decimal"
               min={0}
-              step={1}
+              max={1}
+              step={0.001}
+              placeholder={t.priorPrevalencePlaceholder}
               className="clin-number-input"
-              value={value.tp}
-              onChange={(e) => onChange({ ...value, tp: parseFloat(e.target.value) || 0 })}
+              value={value.priorPrevalence ?? ""}
+              onChange={(e) => {
+                const raw = e.target.value;
+                if (raw === "") {
+                  const { priorPrevalence: _drop, ...rest } = value;
+                  onChange({ ...rest, mode: "table2x2" });
+                } else {
+                  onChange({ ...value, priorPrevalence: parseFloat(raw) });
+                }
+              }}
             />
+            <span className="clin-hint">{t.priorPrevalenceHint}</span>
           </div>
-          <div className="clin-field">
-            <label className="clin-field-label" htmlFor="bayes-fn">{t.fnLabel}</label>
-            <input
-              id="bayes-fn"
-              type="number"
-              inputMode="decimal"
-              min={0}
-              step={1}
-              className="clin-number-input"
-              value={value.fn}
-              onChange={(e) => onChange({ ...value, fn: parseFloat(e.target.value) || 0 })}
-            />
-          </div>
-          <div className="clin-field">
-            <label className="clin-field-label" htmlFor="bayes-tn">{t.tnLabel}</label>
-            <input
-              id="bayes-tn"
-              type="number"
-              inputMode="decimal"
-              min={0}
-              step={1}
-              className="clin-number-input"
-              value={value.tn}
-              onChange={(e) => onChange({ ...value, tn: parseFloat(e.target.value) || 0 })}
-            />
-          </div>
-          <div className="clin-field">
-            <label className="clin-field-label" htmlFor="bayes-fp">{t.fpLabel}</label>
-            <input
-              id="bayes-fp"
-              type="number"
-              inputMode="decimal"
-              min={0}
-              step={1}
-              className="clin-number-input"
-              value={value.fp}
-              onChange={(e) => onChange({ ...value, fp: parseFloat(e.target.value) || 0 })}
-            />
-          </div>
-        </div>
+        </>
       )}
     </div>
   );

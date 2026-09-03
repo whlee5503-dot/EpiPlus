@@ -492,6 +492,10 @@ export const translations = {
           fnLabel: "False negatives (FN)",
           tnLabel: "True negatives (TN)",
           fpLabel: "False positives (FP)",
+          priorPrevalenceLabel: "Population prevalence (prior) — optional",
+          priorPrevalencePlaceholder: "Leave blank to use sample prevalence",
+          priorPrevalenceHint:
+            "Enter a known target-population prevalence to combine with this table's Se/Sp via Bayes' theorem. If left blank, prevalence is derived from this same table (not a genuine external prior).",
         },
         emptyState: "Enter valid Se/Sp/prevalence (0-1), or a complete 2x2 table, to see results",
         validationError:
@@ -499,6 +503,11 @@ export const translations = {
         derivedSeLabel: "Derived Se",
         derivedSpLabel: "Derived Sp",
         derivedPrevLabel: "Derived prevalence",
+        priorPrevLabel: "Prior Prevalence (external)",
+        priorUsedNotice:
+          "Using an external prior prevalence ({prior}) combined with Se/Sp derived from this table (sample prevalence was {sample}). This is a genuine Bayesian calculation.",
+        samplePrevalenceNotice:
+          "No external prior was entered — prevalence was derived from this same table. This reproduces the classical PPV/NPV formulas exactly (PPV = TP/(TP+FP), NPV = TN/(TN+FN)) rather than a genuine Bayesian combination with an independent prior.",
         ppvLabel: "PPV",
         ppvSub: "Se = {se}, Sp = {sp}, Prevalence = {prev}",
         npvLabel: "NPV",
@@ -1066,6 +1075,10 @@ export const translations = {
           fnLabel: "위음성 (FN)",
           tnLabel: "진음성 (TN)",
           fpLabel: "위양성 (FP)",
+          priorPrevalenceLabel: "인구집단 유병률 (사전확률, 선택)",
+          priorPrevalencePlaceholder: "비워두면 표본 유병률을 사용합니다",
+          priorPrevalenceHint:
+            "이 표에서 산출된 Se/Sp와 결합할, 실제 대상 인구집단의 유병률(사전확률)을 입력하세요. 비워두면 이 표에서 유병률까지 함께 산출합니다(진짜 외부 사전확률이 아님).",
         },
         emptyState: "유효한 Se/Sp/유병률(0-1) 또는 완전한 2×2 분할표를 입력하면 결과가 표시됩니다",
         validationError:
@@ -1073,6 +1086,11 @@ export const translations = {
         derivedSeLabel: "산출된 Se",
         derivedSpLabel: "산출된 Sp",
         derivedPrevLabel: "산출된 유병률",
+        priorPrevLabel: "사전확률 유병률 (외부)",
+        priorUsedNotice:
+          "이 표에서 산출된 Se/Sp에, 외부 사전확률 유병률({prior})을 결합해서 계산했습니다(표본 유병률은 {sample}이었습니다). 이는 진짜 베이지안 계산입니다.",
+        samplePrevalenceNotice:
+          "외부 사전확률을 입력하지 않아, 유병률도 이 표에서 그대로 산출했습니다. 이 경우 결과는 고전적 PPV/NPV 공식(PPV = TP/(TP+FP), NPV = TN/(TN+FN))과 정확히 동일하며, 독립적인 사전확률과의 진짜 베이지안 결합이 아닙니다.",
         ppvLabel: "PPV",
         ppvSub: "Se = {se}, Sp = {sp}, 유병률 = {prev}",
         npvLabel: "NPV",
@@ -1667,6 +1685,10 @@ export const translations = {
           fnLabel: "Faux négatifs (FN)",
           tnLabel: "Vrais négatifs (VN)",
           fpLabel: "Faux positifs (FP)",
+          priorPrevalenceLabel: "Prévalence de la population (a priori) — optionnel",
+          priorPrevalencePlaceholder: "Laisser vide pour utiliser la prévalence de l'échantillon",
+          priorPrevalenceHint:
+            "Saisissez une prévalence connue de la population cible, à combiner avec la Se/Sp dérivée de ce tableau via le théorème de Bayes. Si laissé vide, la prévalence est dérivée du même tableau (ce n'est pas un a priori externe véritable).",
         },
         emptyState:
           "Saisissez des Se/Sp/prévalence valides (0-1), ou un tableau 2x2 complet, pour voir les résultats",
@@ -1675,6 +1697,11 @@ export const translations = {
         derivedSeLabel: "Se dérivée",
         derivedSpLabel: "Sp dérivée",
         derivedPrevLabel: "Prévalence dérivée",
+        priorPrevLabel: "Prévalence a priori (externe)",
+        priorUsedNotice:
+          "Utilise une prévalence a priori externe ({prior}) combinée à la Se/Sp dérivée de ce tableau (la prévalence de l'échantillon était {sample}). Il s'agit d'un véritable calcul bayésien.",
+        samplePrevalenceNotice:
+          "Aucun a priori externe n'a été saisi — la prévalence a été dérivée de ce même tableau. Cela reproduit exactement les formules classiques de VPP/VPN (VPP = VP/(VP+FP), VPN = VN/(VN+FN)) plutôt qu'une véritable combinaison bayésienne avec un a priori indépendant.",
         ppvLabel: "VPP",
         ppvSub: "Se = {se}, Sp = {sp}, Prévalence = {prev}",
         npvLabel: "VPN",

@@ -329,6 +329,25 @@ Bayes' theorem in diagnostic contexts".
   and via the 2x2 table produce identical PPV/NPV
 - Result: **PASS**
 
+### Test Case 4 — genuine Bayesian use: external prior prevalence
+- Reuses Test Case 2's 2x2 table (95 TP, 5 FN, 880 TN, 20 FP) to derive
+  Se = 0.95 and Sp = 0.977778, but replaces the sample-derived prevalence
+  (100/1000 = 0.10) with an externally supplied prior prevalence of 0.02
+  (e.g. the known prevalence in the actual target screening population).
+- Hand-computed: PPV = (0.95x0.02)/(0.95x0.02+0.022222x0.98) = 0.019/0.040778
+  = **0.46594** (46.59%); NPV = (0.977778x0.98)/(0.977778x0.98+0.05x0.02)
+  = 0.958222/0.959222 = **0.99896** (99.90%)
+- Result: **PASS** (`src/lib/__tests__/bayesianDiagnostic.test.ts`)
+- Contrast with Test Case 2 (same Se/Sp, no external prior — prevalence taken
+  from the same table): PPV drops from 82.61% to 46.59%, and NPV rises from
+  99.44% to 99.90%, purely from changing the prior. LR+ (42.75) and LR-
+  (0.0511) are unchanged in both cases, since likelihood ratios do not
+  depend on prevalence. This demonstrates the distinction the module
+  docstring describes: Test Case 2 (no `priorPrevalence`) reproduces the
+  classical PPV = TP/(TP+FP) identity exactly and is not a genuine Bayesian
+  calculation, while this test case is — the same Se/Sp combined with a
+  different, externally sourced prior yields materially different results.
+  
 | Function | Status |
 |---|---|
 | `calculateBayesianDiagnostic` | ✅ Validated |
