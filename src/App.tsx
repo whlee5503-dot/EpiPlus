@@ -1,6 +1,7 @@
 ﻿import { useState, useEffect, lazy, Suspense } from "react";
 import "./App.css";
 import ErrorBoundary from "./components/ErrorBoundary";
+import Footer from "./components/Footer";
 import { translations } from "./i18n/translations";
 import type { Lang } from "./i18n/translations";
 
@@ -162,16 +163,15 @@ function App() {
         </ErrorBoundary>
       </main>
 
-      <footer
-        style={{
-          padding: "var(--space-4) var(--space-6)",
-          borderTop: "1px solid var(--border-color)",
-          color: "var(--text-muted)",
-          fontSize: "0.78rem",
+      <Footer
+        currentAppId="epiplus"
+        disclaimer={t.common.disclaimer}
+        labels={{
+          siblingsHeading: t.common.footer.siblingsHeading,
+          hub: t.common.footer.hub,
+          orcid: t.common.footer.orcid,
         }}
-      >
-        {t.common.disclaimer}
-      </footer>
+      />
     </div>
   );
 }
