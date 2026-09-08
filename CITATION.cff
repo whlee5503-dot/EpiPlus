@@ -5,6 +5,8 @@ type: software
 authors:
   - family-names: "Lee"
     given-names: "Won Ho"
+    orcid: "https://orcid.org/0009-0005-1866-8257"
+    affiliation: "PublicHealth Tech Lab"
 repository-code: "https://github.com/whlee5503-dot/EpiPlus"
 url: "https://epiplus.phtlab.org"
 license: MIT
