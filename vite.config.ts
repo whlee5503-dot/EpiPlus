@@ -9,6 +9,7 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
+        id: '/',
         name: 'EpiPlus — Epidemiology & Biostatistics Calculator Suite',
         short_name: 'EpiPlus',
         description:
@@ -18,30 +19,20 @@ export default defineConfig({
         display: 'standalone',
         start_url: '/',
         icons: [
-          { src: '/favicon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' },
           { src: '/icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
           { src: '/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
           { src: '/icon-512-maskable.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
         ],
       },
       workbox: {
-        // App-shell precaching, matching EpiCalc's approach: only the
-        // HTML/CSS/icons/fonts needed for the very first paint are
-        // downloaded at install time. This keeps the initial PWA install
-        // small and fast on slow/metered connections (2G/3G) — the
-        // scenario this app explicitly targets for field health workers.
-        // Fonts are self-hosted (see src/styles/fonts.css) and included
-        // here since they're needed immediately for correct first-paint
-        // rendering, not just for a specific calculator.
-        globPatterns: ['**/*.{html,css,ico,png,svg,webmanifest,woff2}'],
+        // Precache the app shell and every calculator module at install time,
+        // so all 12 calculators work offline even if never opened online.
+        // The download (about 1 MB) runs in the background after the first
+        // visit and does not delay first paint.
+        globPatterns: ['**/*.{html,js,css,ico,png,svg,webmanifest,woff2}'],
+        maximumFileSizeToCacheInBytes: 3 * 1024 * 1024,
 
-        // JS chunks (the app shell's own bundle plus every lazy-loaded
-        // calculator module) are NOT precached upfront. Instead they're
-        // cached the first time each one is actually requested, via
-        // CacheFirst runtime caching — so a calculator the user has
-        // opened at least once while online stays available offline
-        // afterwards, without forcing every user to download all 12
-        // calculators' worth of JS just to install the app.
+        // Runtime caching stays as a fallback for any JS outside the precache list.
         runtimeCaching: [
           {
             // Same-origin JS chunks (app shell + lazy calculator modules)
